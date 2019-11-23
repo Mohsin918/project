@@ -1,8 +1,13 @@
+#This file registeres the Host who has to attend a Client
 from tkinter import*
+
 class Hosts:
+    #Host Details
     hostname=""
     hostmail=""
     hostphone=""
+    
+    #Registration of the host
     def register_host(self):
         Hosts.hostname=username.get()
         Hosts.hostmail=email.get()
@@ -13,7 +18,7 @@ class Hosts:
         guest = Guests()
         guest.guest_screen()
         
-    
+    #GUI screen for the host registration
     def main_screen(self):
         global screen
         screen = Tk();
