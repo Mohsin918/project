@@ -5,15 +5,19 @@ import config
 import requests
 import json
 URL = "https://www.way2sms.com/api/v1/sendCampaign"
+
 class Guests:
     guest_name=""
     guest_email=""
     guest_phone=""
+    
+    #Sending SMS to the Host about the arrival of Client
     def sendPostRequest(self,reqUrl,apiKey,secretKey,useType,phoneNo,senderId,textMessage):
         req_params = {'apikey':apiKey,'secret':secretKey,'usetype':useType,'phone': phoneNo,'message':textMessage,'senderid':senderId}
         print("Message Successfullt Sent")
         return requests.post(reqUrl, req_params)
     
+    #Sending SMS to both Client and Host
     def send_email(self,a,message):
         try:
             server = smtplib.SMTP('smtp.gmail.com:587')
@@ -27,6 +31,7 @@ class Guests:
         except:
             print('Email Failed To Send')
             
+    #This method retrieves and stores the guest credentials       
     def register_guest(self):
         screen.destroy()
         Guests.guest_name = username.get()
@@ -44,6 +49,7 @@ class Guests:
         message2+= Guests.guest_name+" "+Guests.guest_phone+" "+guest_check_in+" "+guest_check_out+" "+Hosts.hostname
         self.send_email(Guests.guest_email,message2)
         
+    #This method created the screen in Trinket in python    
     def guest_screen(self):
         global screen
         screen = Tk()
