@@ -23,7 +23,7 @@ class Guests:
             server = smtplib.SMTP('smtp.gmail.com:587')
             server.ehlo()
             server.starttls()
-            server.login(config.EMAIL_ADDRESS,config.PASSWORD)
+            server.login(config.EMAIL_ADDRESS,config.PASSWORD)#config file contains the email and password of the sender
             from Host import Hosts
             server.sendmail(config.EMAIL_ADDRESS,a,message)
             server.quit()
